@@ -22,8 +22,7 @@ import injectSaga from '../../utils/injectSaga';
 import reducer from './reducer';
 import saga from './saga';
 import { compose } from 'redux';
-import { register, login, setAuthToken, setCurrentUser, logout } from './actions';
-import jwt_decode from 'jwt-decode';
+import { login, setAuthToken, setCurrentUser, logout } from './actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -42,9 +41,7 @@ class App extends React.Component {
       }
     }
   }
-  register = payload => {
-    this.props.dispatch(register(payload));
-  };
+
   login = payload => {
     this.props.dispatch(login(payload));
   };

@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { Container, Paper, Zoom } from '@material-ui/core';
-import { login, register } from '../App/actions';
-import { VIEW_OPTIONS } from './constants';
-import { makeSelectErrors } from '../App/selectors';
-import AuthComponent from '../../components/landing/landing';
+import { login } from '../../App/actions';
+import { makeSelectErrors } from '../../App/selectors';
+import AuthComponent from '../../../components/landing/landing';
 
 class Auth extends Component {
   constructor(props) {
     super();
     this.state = {
-      view: VIEW_OPTIONS.VIEW_REGISTER,
       firstName: '',
       lastName: '',
       email: '',
@@ -43,7 +40,6 @@ class Auth extends Component {
           <Paper elevation={3} className={classes.landingPaper}>
             <AuthComponent
               onChange={this.onChange}
-              onRegister={this.onRegister}
               onLogin={this.onLogin}
               errors={errors}
             />

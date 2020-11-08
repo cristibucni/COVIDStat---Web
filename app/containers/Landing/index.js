@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core';
 import { makeSelectUser, makeSelectUserIsAuthenticated } from '../App/selectors';
-import Auth from '../Auth';
+import Auth from './Auth';
 import HomePage from '../HomePage'
 import styles from './styles';
 
@@ -16,7 +16,6 @@ class Landing extends Component {
     return isAuthenticated ? <HomePage/> : <Auth dispatch={this.props.dispatch} classes={classes} />;
   }
 }
-
 const mapStateToProps = createStructuredSelector({
   isAuthenticated: makeSelectUserIsAuthenticated(),
   user: makeSelectUser(),

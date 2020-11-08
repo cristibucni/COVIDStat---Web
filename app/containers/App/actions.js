@@ -1,26 +1,11 @@
 import {
   LOG_IN,
   SET_CURRENT_USER,
-  REGISTER,
   LOG_OUT,
   SET_LOCAL_STORAGE_TOKEN,
   SET_AUTH_TOKEN,
   GET_ERRORS,
-  REGISTERED,
 } from './constants';
-
-export function register(payload) {
-  return {
-    type: REGISTER,
-    payload,
-  };
-}
-
-export function registered() {
-  return {
-    type: REGISTERED,
-  };
-}
 
 export function login(userData) {
   return {

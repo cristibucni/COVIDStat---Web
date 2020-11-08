@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { fromJS } from 'immutable';
-import { SET_LOCAL_STORAGE_TOKEN, SET_AUTH_TOKEN, SET_CURRENT_USER, REGISTERED, GET_ERRORS } from './constants';
+import { SET_LOCAL_STORAGE_TOKEN, SET_AUTH_TOKEN, SET_CURRENT_USER, GET_ERRORS } from './constants';
 
 export const initialState = fromJS({
   isAuthenticated: false,
@@ -27,9 +27,6 @@ function globalReducer(state = initialState, action) {
     case SET_CURRENT_USER: {
       localStorage.setItem('expDate', action.expDate);
       return state.set('isAuthenticated', true).set('expDate', action.expDate);
-    }
-    case REGISTERED: {
-      return state;
     }
     case GET_ERRORS: {
       return state.set('errors', action.error);

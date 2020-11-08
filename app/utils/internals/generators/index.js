@@ -7,9 +7,9 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-const componentGenerator = require('./component/index.js');
-const containerGenerator = require('./container/index.js');
-const languageGenerator = require('./language/index.js');
+const componentGenerator = require('./component');
+const containerGenerator = require('./container');
+const languageGenerator = require('./language');
 
 /**
  * Every generated backup file gets this extension

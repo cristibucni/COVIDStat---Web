@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
+import NotFoundPage from 'containers/Utils/NotFoundPage/Loadable';
 
-import Landing from 'containers/Landing/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import reducer from './reducer';
-import injectReducer from '../../utils/injectReducer';
+import injectReducer from 'utils/injectReducer';
 import saga from './saga';
-import injectSaga from '../../utils/injectSaga';
-import { login, setAuthToken, setCurrentUser, logout } from './actions';
+import injectSaga from 'utils/injectSaga';
+import { login, logout, setAuthToken, setCurrentUser } from './actions';
 import { makeSelectErrors, makeSelectUser, makeSelectUserIsAuthenticated } from './selectors';
+
+import HomePage from '../Private/HomePage/Loadable';
+import Auth from '../Landings/Auth/Loadable';
 
 import GlobalStyle from '../../global-styles';
 
@@ -39,13 +41,16 @@ class App extends React.Component {
   };
 
   render() {
+    const { isAuthenticated } = this.props;
     return (
       <div>
         <Switch>
           <Route
             exact
             path="/"
-            render={props => <Landing {...props} dispatch={this.props.dispatch} errors={this.props.errors} />}
+            render={() =>
+              isAuthenticated ? <HomePage /> : <Auth dispatch={this.props.dispatch} errors={this.props.errors} />
+            }
           />
           <Route component={NotFoundPage} />
         </Switch>
@@ -56,6 +61,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
 };

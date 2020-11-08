@@ -20,7 +20,7 @@ const xmark = require('./helpers/xmark');
  * Every generated component/container is preceded by this
  * @type {string}
  */
-const { BACKUPFILE_EXTENSION } = require('../generators/index');
+const { BACKUPFILE_EXTENSION } = require('../generators');
 
 process.chdir(path.join(__dirname, '../generators'));
 

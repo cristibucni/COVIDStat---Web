@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Container, Paper, Zoom } from '@material-ui/core';
-import { login } from '../../App/actions';
-import { makeSelectErrors } from '../../App/selectors';
-import AuthComponent from '../../../components/landing/landing';
+import { Container, Paper, withStyles, Zoom } from '@material-ui/core';
+import { login } from 'containers/App/actions';
+import { makeSelectErrors } from 'containers/App/selectors';
+import AuthComponent from 'components/Landings/Auth';
+import styles from './styles';
 
 class Auth extends Component {
   constructor(props) {
@@ -38,11 +39,7 @@ class Auth extends Component {
       <Container classes={{ root: classes.root }} maxWidth="xl">
         <Zoom in ref={this.wrapper}>
           <Paper elevation={3} className={classes.landingPaper}>
-            <AuthComponent
-              onChange={this.onChange}
-              onLogin={this.onLogin}
-              errors={errors}
-            />
+            <AuthComponent onChange={this.onChange} onLogin={this.onLogin} errors={errors} />
           </Paper>
         </Zoom>
       </Container>
@@ -54,4 +51,7 @@ const mapStateToProps = createStructuredSelector({
   errors: makeSelectErrors(),
 });
 
-export default compose(connect(mapStateToProps))(Auth);
+export default compose(
+  connect(mapStateToProps),
+  withStyles(styles()),
+)(Auth);

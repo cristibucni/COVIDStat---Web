@@ -1,6 +1,5 @@
 const styles = () => ({
   root: {
-    background: `url(${require('./img/showcase.jpg')}) no-repeat`,
     position: 'relative',
     backgroundSize: 'cover',
     backgroundPosition: 'center',

@@ -27,16 +27,6 @@ class Auth extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onRegister = () => {
-    const payload = {
-      email: this.state.email,
-      name: `${this.state.firstName} ${this.state.lastName}`,
-      password: this.state.password,
-      passwordConfirmation: this.state.passwordConfirm,
-    };
-    this.props.dispatch(register(payload));
-  };
-
   onLogin = () => {
     const payload = {
       email: this.state.email,

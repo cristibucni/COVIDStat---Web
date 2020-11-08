@@ -44,6 +44,7 @@ class Auth extends Component {
     };
     this.props.dispatch(login(payload));
   };
+
   render() {
     const { classes, errors } = this.props;
     return (

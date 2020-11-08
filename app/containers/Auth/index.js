@@ -50,7 +50,7 @@ class Auth extends Component {
       <Container classes={{ root: classes.root }} maxWidth="xl">
         <Zoom in ref={this.wrapper}>
           <Paper elevation={3} className={classes.landingPaper}>
-            <AuthCompoanent
+            <AuthComponent
               onChange={this.onChange}
               onRegister={this.onRegister}
               onLogin={this.onLogin}

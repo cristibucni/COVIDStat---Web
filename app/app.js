@@ -24,7 +24,7 @@ import LanguageProvider from 'containers/Utils/LanguageProvider';
 
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
-import '!file-loader?name=[name].[ext]!./images/utils/favicon.ico';
+import '!file-loader?name=[name].[ext]!./images/utils/favicon.png';
 import 'file-loader?name=.htaccess!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 

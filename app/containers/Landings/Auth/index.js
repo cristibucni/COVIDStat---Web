@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { Container, Paper, withStyles, Zoom } from '@material-ui/core';
+import { Container, withStyles, Zoom } from '@material-ui/core';
 import { login } from 'containers/App/actions';
-import { makeSelectErrors } from 'containers/App/selectors';
 import AuthComponent from 'components/Landings/Auth';
 import styles from './styles';
 
 class Auth extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
       email: '',
       password: '',
-      passwordConfirm: '',
     };
     this.wrapper = React.createRef();
   }
@@ -34,24 +27,17 @@ class Auth extends Component {
   };
 
   render() {
-    const { classes, errors } = this.props;
+    const { classes } = this.props;
     return (
       <Container classes={{ root: classes.root }} maxWidth="xl">
         <Zoom in ref={this.wrapper}>
-          <Paper elevation={3} className={classes.landingPaper}>
-            <AuthComponent onChange={this.onChange} onLogin={this.onLogin} errors={errors} />
-          </Paper>
+          <div className={classes.landingPaper}>
+            <AuthComponent onChange={this.onChange} onLogin={this.onLogin} />
+          </div>
         </Zoom>
       </Container>
     );
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  errors: makeSelectErrors(),
-});
-
-export default compose(
-  connect(mapStateToProps),
-  withStyles(styles()),
-)(Auth);
+export default withStyles(theme => styles(theme))(Auth);

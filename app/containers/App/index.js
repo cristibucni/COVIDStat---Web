@@ -13,14 +13,16 @@ import injectReducer from 'utils/injectReducer';
 import saga from './saga';
 import injectSaga from 'utils/injectSaga';
 import { login, logout, setAuthToken, setCurrentUser } from './actions';
-import { makeSelectErrors, makeSelectUser, makeSelectUserIsAuthenticated } from './selectors';
-import theme from 'containers/Utils/Layout/theme';
+import { makeSelectErrors, makeSelectUser, makeSelectUserIsAuthenticated, makeSelectLoading } from './selectors';
+import theme from 'containers/Layout/theme';
 
 import HomePage from '../Private/HomePage/Loadable';
 import Auth from '../Landings/Auth/Loadable';
-import Navigation from 'containers/Utils/Layout/Navigation';
+import Navigation from 'containers/Layout/Navigation';
 
 import GlobalStyle from '../../global-styles';
+import { AuthContext } from 'containers/App/constants';
+import Footer from 'containers/Layout/Footer';
 
 class App extends React.Component {
   constructor(props) {
@@ -32,7 +34,6 @@ class App extends React.Component {
       // Set exp time
       this.props.dispatch(setCurrentUser(expDate));
       // Check for expired token
-
       const currentTime = Date.now() / 1000;
       if (expDate < currentTime) {
         this.props.dispatch(logout());
@@ -46,24 +47,26 @@ class App extends React.Component {
 
   logout = () => {
     this.props.dispatch(logout());
-    console.log('did it')
   };
 
   render() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, user, loading } = this.props;
     return (
       <ThemeProvider theme={theme}>
-        <Navigation logout={this.logout}/>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() =>
-              isAuthenticated ? <HomePage /> : <Auth dispatch={this.props.dispatch} errors={this.props.errors} />
-            }
-          />
-          <Route component={NotFoundPage} />
-        </Switch>
+        <AuthContext.Provider value={{ isAuthenticated, user, loading }}>
+          <Navigation logout={this.logout} />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() =>
+                isAuthenticated ? <HomePage /> : <Auth dispatch={this.props.dispatch} errors={this.props.errors} />
+              }
+            />
+            <Route component={NotFoundPage} />
+          </Switch>
+          <Footer />
+        </AuthContext.Provider>
         <GlobalStyle />
       </ThemeProvider>
     );
@@ -71,15 +74,17 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   user: makeSelectUser(),
   isAuthenticated: makeSelectUserIsAuthenticated(),
   errors: makeSelectErrors(),
+  loading: makeSelectLoading(),
 });
 
 const mapDispatchToProps = dispatch => ({

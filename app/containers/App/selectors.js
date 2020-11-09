@@ -24,5 +24,10 @@ const makeSelectErrors = () =>
     selectGlobal,
     state => state.get('errors'),
   );
+const makeSelectLoading = () =>
+  createSelector(
+    selectGlobal,
+    state => state.get('loading'),
+  );
 
-export { makeSelectUserIsAuthenticated, makeSelectUser, makeSelectLocation, makeSelectErrors };
+export { makeSelectUserIsAuthenticated, makeSelectUser, makeSelectLocation, makeSelectErrors, makeSelectLoading};

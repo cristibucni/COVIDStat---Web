@@ -1,4 +1,13 @@
-import { LOG_IN, SET_CURRENT_USER, SET_LOCAL_STORAGE_TOKEN, SET_AUTH_TOKEN, GET_ERRORS, LOGOUT } from './constants';
+import {
+  LOG_IN,
+  SET_CURRENT_USER,
+  SET_LOCAL_STORAGE_TOKEN,
+  SET_AUTH_TOKEN,
+  GET_ERRORS,
+  LOGOUT,
+  START_LOADING,
+  STOP_LOADING,
+} from './constants';
 
 export function login(userData) {
   return {
@@ -38,5 +47,17 @@ export function getErrors(error) {
   return {
     type: GET_ERRORS,
     error,
+  };
+}
+
+export function startLoading() {
+  return {
+    type: START_LOADING,
+  };
+}
+
+export function stopLoading() {
+  return {
+    type: STOP_LOADING,
   };
 }

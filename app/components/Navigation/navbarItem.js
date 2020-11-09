@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ListItem, ListItemIcon, ListItemText, withStyles } from '@material-ui/core';
-import styles from 'containers/Utils/Layout/Navigation/styles';
+import styles from 'containers/Layout/Navigation/styles';
 
 const NavbarItem = props => {
   const { classes, item } = props;

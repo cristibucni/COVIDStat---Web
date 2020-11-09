@@ -1,20 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
-
 import { withStyles } from '@material-ui/core';
-
-import { makeSelectUserIsAuthenticated } from 'containers/App/selectors';
-
 import Navbar from 'components/Navigation/navbar';
 import Header from 'components/Navigation/header';
 
-import styles from './styles';
+import styles from 'containers/Layout/Navigation/styles';
 
 const Navigation = props => {
-  const { classes, logout, isAuthenticated } = props;
+  const { classes, logout } = props;
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleNavbar = event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -25,24 +18,14 @@ const Navigation = props => {
   return (
     <div className={classes.navbar}>
       <Header logout={logout} toggleNavbar={toggleNavbar} />
-      <Navbar isOpen={isOpen} toggleNavbar={toggleNavbar} isAuthenticated={isAuthenticated} />
+      <Navbar isOpen={isOpen} toggleNavbar={toggleNavbar} />
     </div>
   );
 };
 
 Navigation.propTypes = {
   classes: PropTypes.object.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  isAuthenticated: makeSelectUserIsAuthenticated(),
-});
-
-const withConnect = connect(mapStateToProps);
-
-export default compose(
-  withConnect,
-  withStyles(theme => styles(theme), { withTheme: true }),
-)(Navigation);
+export default withStyles(theme => styles(theme), { withTheme: true })(Navigation);

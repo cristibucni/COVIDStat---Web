@@ -1,11 +1,13 @@
-import React from 'react';``
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Button, IconButton, Toolbar, Typography, withStyles } from '@material-ui/core';
-import { ExitToApp, LocalHospital, Menu } from '@material-ui/icons';
-import styles from 'containers/Utils/Layout/Navigation/styles';
+import { ExitToApp, LocalHospital, LockOpen, Menu } from '@material-ui/icons';
+import { AuthContext } from 'containers/App/constants';
+import styles from 'containers/Layout/Navigation/styles';
 
 const Header = props => {
   const { classes, toggleNavbar, logout } = props;
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <AppBar classes={{ root: classes.appBar }} position="static">
       <Toolbar>
@@ -20,12 +22,19 @@ const Header = props => {
         </IconButton>
         <LocalHospital />
         <Typography variant="h6" className={classes.title}>
-          COVIDStat
+          COVIDStat - Fii parte a luptei contra SARS-CoV-2
         </Typography>
-        <Button color="inherit" onClick={logout}>
-          Logout
-          <ExitToApp />
-        </Button>
+        {isAuthenticated ? (
+          <Button color="inherit" onClick={logout}>
+            Logout
+            <ExitToApp />
+          </Button>
+        ) : (
+          <Button color="inherit">
+            Log in
+            <LockOpen />
+          </Button>
+        )}
       </Toolbar>
     </AppBar>
   );

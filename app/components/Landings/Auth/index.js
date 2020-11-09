@@ -1,37 +1,40 @@
-import React from 'react';
-import { Button, Grid, TextField, withStyles } from '@material-ui/core';
+import React, { useContext } from 'react';
+import { Button, CircularProgress, FormControl, TextField, Typography, withStyles } from '@material-ui/core';
 import { compose } from 'redux';
 import styles from './styles';
+import { LocalHospital } from '@material-ui/icons';
+import { AuthContext } from 'containers/App/constants';
 
 const LoginComponent = props => {
-  const { onChange, classes, onLogin} = props;
+  const { onChange, classes, onLogin } = props;
+  const { loading } = useContext(AuthContext);
   return (
-    <Grid container spacing={4} direction="column" justify="center">
-      <Grid item xs={12}>
-        <TextField fullWidth label="E-Mail" name="email" onChange={onChange} variant="outlined" autoComplete="false" />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          fullWidth
-          type="password"
-          label="Password"
-          name="password"
-          onChange={onChange}
-          variant="outlined"
-          autoComplete="false"
-        />
-      </Grid>
-      <Grid item xs={12} align="right" className={classes.marginTopAuto}>
-        <Button
-          variant="contained"
-          classes={{ root: classes.button }}
-          onClick={onLogin}
-        >
-          Login
+    <>
+      <div className={classes.title}>
+        <LocalHospital color={'secondary'} />
+        <Typography variant="h6">COVIDStat - Autentificare</Typography>
+      </div>
+      <div className={classes.form}>
+        <FormControl className={classes.formControl} fullWidth>
+          <TextField fullWidth label="Email" name="email" onChange={onChange} variant={'outlined'} required />
+        </FormControl>
+        <FormControl className={classes.formControl} fullWidth>
+          <TextField
+            fullWidth
+            label="Password"
+            name="password"
+            onChange={onChange}
+            required
+            type="password"
+            variant={'outlined'}
+          />
+        </FormControl>
+        <Button variant="contained" onClick={onLogin} classes={{ root: classes.button }}>
+          {loading ? <CircularProgress color="secondary" size={24.5} /> : 'Log in'}
         </Button>
-      </Grid>
-    </Grid>
+      </div>
+    </>
   );
 };
 
-export default compose(withStyles(styles()))(LoginComponent);
+export default compose(withStyles(theme => styles(theme)))(LoginComponent);

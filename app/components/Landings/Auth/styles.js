@@ -1,34 +1,28 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import green from '@material-ui/core/colors/green';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#ED8910',
-    },
-    secondary: {
-      main: green[500],
-    },
-  },
-});
-
-const styles = () => ({
-  current: {
-    color: '#ED8910',
-    fontWeight: 'bold',
-  },
+const styles = theme => ({
   button: {
-    backgroundColor: theme.palette.primary.main,
-    color: '#FFFFFF',
     '&:hover': {
       backgroundColor: theme.palette.secondary.main,
     },
-  },
-  breadcrumbs: {
-    cursor: 'pointer',
-  },
-  marginTopAuto: {
+    backgroundColor: theme.palette.primary.main,
+    color: '#FFFFFF',
+    margin: '0 auto',
     marginTop: 'auto',
+    textTransform: 'none',
+    width: '40%',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+  },
+  formControl: {
+    marginBottom: '23px',
+  },
+  title: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '14px',
   },
 });
 

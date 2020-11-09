@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { fromJS } from 'immutable';
-import { SET_LOCAL_STORAGE_TOKEN, SET_AUTH_TOKEN, SET_CURRENT_USER, GET_ERRORS } from './constants';
+import { GET_ERRORS, SET_AUTH_TOKEN, SET_CURRENT_USER, SET_LOCAL_STORAGE_TOKEN, LOGOUT } from './constants';
 
 export const initialState = fromJS({
   isAuthenticated: false,
@@ -30,6 +30,11 @@ function globalReducer(state = initialState, action) {
     }
     case GET_ERRORS: {
       return state.set('errors', action.error);
+    }
+    case LOGOUT: {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('expDate');
+      return state.set('isAuthenticated', false);
     }
     default:
       return state;

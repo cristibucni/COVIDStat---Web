@@ -1,11 +1,4 @@
-import {
-  LOG_IN,
-  SET_CURRENT_USER,
-  LOG_OUT,
-  SET_LOCAL_STORAGE_TOKEN,
-  SET_AUTH_TOKEN,
-  GET_ERRORS,
-} from './constants';
+import { LOG_IN, SET_CURRENT_USER, SET_LOCAL_STORAGE_TOKEN, SET_AUTH_TOKEN, GET_ERRORS, LOGOUT } from './constants';
 
 export function login(userData) {
   return {
@@ -23,7 +16,7 @@ export function setCurrentUser(expDate) {
 
 export function logout() {
   return {
-    type: LOG_OUT,
+    type: LOGOUT,
   };
 }
 

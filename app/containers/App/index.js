@@ -6,15 +6,19 @@ import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import NotFoundPage from 'containers/Utils/NotFoundPage/Loadable';
 
+import { ThemeProvider } from '@material-ui/core/styles';
+
 import reducer from './reducer';
 import injectReducer from 'utils/injectReducer';
 import saga from './saga';
 import injectSaga from 'utils/injectSaga';
 import { login, logout, setAuthToken, setCurrentUser } from './actions';
 import { makeSelectErrors, makeSelectUser, makeSelectUserIsAuthenticated } from './selectors';
+import theme from 'containers/Utils/Layout/theme';
 
 import HomePage from '../Private/HomePage/Loadable';
 import Auth from '../Landings/Auth/Loadable';
+import Navigation from 'containers/Utils/Layout/Navigation';
 
 import GlobalStyle from '../../global-styles';
 
@@ -40,10 +44,16 @@ class App extends React.Component {
     this.props.dispatch(login(payload));
   };
 
+  logout = () => {
+    this.props.dispatch(logout());
+    console.log('did it')
+  };
+
   render() {
     const { isAuthenticated } = this.props;
     return (
-      <div>
+      <ThemeProvider theme={theme}>
+        <Navigation logout={this.logout}/>
         <Switch>
           <Route
             exact
@@ -55,7 +65,7 @@ class App extends React.Component {
           <Route component={NotFoundPage} />
         </Switch>
         <GlobalStyle />
-      </div>
+      </ThemeProvider>
     );
   }
 }

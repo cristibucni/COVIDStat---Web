@@ -1,16 +1,16 @@
-const background = require('../../../images/utils/footer.png')
+const background = require('../../../images/utils/footer.png');
 const styles = theme => ({
   appBar: {
     height: '8vh',
     display: 'flex',
     justifyContent: 'center',
     backgroundImage: `url(${background})`,
-    backgroundPosition:'center',
-    backgroundSize:'100%',
+    backgroundPosition: 'center',
+    backgroundSize: '100%',
   },
   link: {
     textDecoration: 'none',
-    color:'inherit'
+    color: 'inherit',
   },
   list: {
     width: '13vw',
@@ -22,12 +22,15 @@ const styles = theme => ({
   },
   navbar: {
     flexGrow: 1,
-    maxHeight:'8vh'
+    maxHeight: '8vh',
   },
   title: {
     flexGrow: 1,
     paddingLeft: '8px',
-  }
+  },
+  icon: {
+    fontSize: '28px',
+  },
 });
 
 export default styles;

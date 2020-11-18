@@ -9,7 +9,7 @@ const NavbarItem = props => {
   return (
     <Link className={classes.link} to={item.link}>
       <ListItem button>
-        <ListItemIcon>{item.icon}</ListItemIcon>
+        <ListItemIcon>{item.icon(classes.icon)}</ListItemIcon>
         <ListItemText primary={item.text} />
       </ListItem>
     </Link>

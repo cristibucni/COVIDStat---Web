@@ -16,7 +16,7 @@ import { login, logout, setAuthToken, setCurrentUser } from './actions';
 import { makeSelectErrors, makeSelectUser, makeSelectUserIsAuthenticated, makeSelectLoading } from './selectors';
 import theme from 'containers/Layout/theme';
 
-import HomePage from '../Private/HomePage/Loadable';
+import Dashboard from '../Private/Dashboard/Loadable';
 import Auth from '../Landings/Auth/Loadable';
 import Navigation from 'containers/Layout/Navigation';
 
@@ -60,12 +60,12 @@ class App extends React.Component {
               exact
               path="/"
               render={() =>
-                isAuthenticated ? <HomePage /> : <Auth dispatch={this.props.dispatch} errors={this.props.errors} />
+                isAuthenticated ? <Dashboard /> : <Auth dispatch={this.props.dispatch} errors={this.props.errors} />
               }
             />
             <Route component={NotFoundPage} />
           </Switch>
-          <Footer />
+          {!isAuthenticated && <Footer />}
         </AuthContext.Provider>
         <GlobalStyle />
       </ThemeProvider>

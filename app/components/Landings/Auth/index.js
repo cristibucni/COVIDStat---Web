@@ -8,6 +8,11 @@ import { AuthContext } from 'containers/App/constants';
 const LoginComponent = props => {
   const { onChange, classes, onLogin } = props;
   const { loading } = useContext(AuthContext);
+  const onKeyPress = e => {
+    if (e.key === 'Enter') {
+      onLogin();
+    }
+  };
   return (
     <>
       <div className={classes.title}>
@@ -16,7 +21,15 @@ const LoginComponent = props => {
       </div>
       <div className={classes.form}>
         <FormControl className={classes.formControl} fullWidth>
-          <TextField fullWidth label="Email" name="email" onChange={onChange} variant={'outlined'} required />
+          <TextField
+            fullWidth
+            label="Email"
+            name="email"
+            onChange={onChange}
+            onKeyPress={onKeyPress}
+            variant={'outlined'}
+            required
+          />
         </FormControl>
         <FormControl className={classes.formControl} fullWidth>
           <TextField
@@ -24,6 +37,7 @@ const LoginComponent = props => {
             label="Password"
             name="password"
             onChange={onChange}
+            onKeyPress={onKeyPress}
             required
             type="password"
             variant={'outlined'}

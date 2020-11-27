@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
 import ReactEcharts from 'echarts-for-react';
+import { Grid, withStyles } from '@material-ui/core';
+import styles from 'containers/Private/Stats/styles';
 
 const SymptomXPacients = props => {
   const { symptoms, patients, classes } = props;
@@ -14,7 +15,7 @@ const SymptomXPacients = props => {
     };
   });
   return (
-    <Grid conatiner item xs={12} sm={6} md={4} direction={'column'} className={classes.chartContainer}>
+    <Grid container item xs={12} sm={6} md={4} direction={'column'} className={classes.chartContainer}>
       <Grid item xs={12} className={classes.chartTitle}>
         Simptome frecvente
       </Grid>
@@ -57,4 +58,4 @@ SymptomXPacients.defaultProps = {
   symptoms: [],
 };
 
-export default SymptomXPacients;
+export default withStyles(theme => styles(theme))(SymptomXPacients);

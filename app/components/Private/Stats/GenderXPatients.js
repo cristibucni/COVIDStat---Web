@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
-import Grid from '@material-ui/core/Grid';
+import { Grid, withStyles } from '@material-ui/core';
+import styles from 'containers/Private/Stats/styles';
 
 const GenderXPatients = props => {
   const { patients, classes } = props;
@@ -13,7 +14,7 @@ const GenderXPatients = props => {
       patients.filter(patient => patient.totalScore > 200).filter(patient => patient.gender === gender).length,
   }));
   return (
-    <Grid conatiner item xs={12} sm={6} direction={'column'} className={classes.chartContainer}>
+    <Grid container item xs={12} sm={6} direction={'column'} className={classes.chartContainer}>
       <Grid item xs={12} className={classes.chartTitle}>
         Pacienti impartiti pe gen
       </Grid>
@@ -62,6 +63,9 @@ const GenderXPatients = props => {
   );
 };
 
-GenderXPatients.propTypes = {};
+GenderXPatients.propTypes = {
+  patients: PropTypes.array.isRequired,
+  classes: PropTypes.object.isRequired,
+};
 
-export default GenderXPatients;
+export default withStyles(theme => styles(theme))(GenderXPatients);

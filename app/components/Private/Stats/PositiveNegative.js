@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
+import { Grid, withStyles } from '@material-ui/core';
+import styles from 'containers/Private/Stats/styles';
 
 const PositiveNegative = props => {
   const { tests, classes } = props;
@@ -27,4 +28,4 @@ PositiveNegative.propTypes = {
 PositiveNegative.defaultProps = {
   tests: [],
 };
-export default PositiveNegative;
+export default withStyles(theme => styles(theme))(PositiveNegative);

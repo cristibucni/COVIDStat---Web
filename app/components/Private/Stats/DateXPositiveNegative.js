@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import ReactEcharts from 'echarts-for-react';
 import _ from 'lodash';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+import ReactEcharts from 'echarts-for-react';
+import { Grid, withStyles } from '@material-ui/core';
+import styles from 'containers/Private/Stats/styles';
 
 const DateXPositiveNegative = props => {
   const { tests, classes } = props;
@@ -22,7 +23,7 @@ const DateXPositiveNegative = props => {
     i += Math.round(dateXPositiveNegative.length / 10);
   }
   return data.map((items, index) => (
-    <Grid conatiner item xs={12} sm={6} direction={'column'} className={classes.chartContainer}>
+    <Grid container item xs={12} sm={6} direction={'column'} className={classes.chartContainer}>
       <Grid item xs={12} className={classes.chartTitle}>
         Teste pe zile {moment(new Date(items[items.length - 1].date)).format('DD.MM.YYYY')} -{' '}
         {moment(new Date(items[0].date)).format('DD.MM.YYY')}
@@ -81,4 +82,4 @@ DateXPositiveNegative.defaultProps = {
   tests: [],
 };
 
-export default DateXPositiveNegative;
+export default withStyles(theme => styles(theme))(DateXPositiveNegative);

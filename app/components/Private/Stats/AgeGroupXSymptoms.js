@@ -1,8 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
 import { AGE_GROUPS } from 'containers/Private/Stats/utils';
+import { withStyles } from '@material-ui/core';
+import styles from 'containers/Private/Stats/styles';
 
 const AgeGroupXSymptoms = props => {
   const { symptoms, patients, classes } = props;
@@ -20,7 +22,7 @@ const AgeGroupXSymptoms = props => {
   }));
 
   return (
-    <Grid conatiner item xs={12} direction={'column'} className={classes.chartContainer}>
+    <Grid container item xs={12} direction={'column'} className={classes.chartContainer}>
       <Grid item xs={12} className={classes.chartTitle}>
         Histograma simptomelor in functie de grupele de varsta
       </Grid>
@@ -89,4 +91,4 @@ AgeGroupXSymptoms.defaultProps = {
   symptoms: [],
 };
 
-export default AgeGroupXSymptoms;
+export default withStyles(theme => styles(theme))(AgeGroupXSymptoms);

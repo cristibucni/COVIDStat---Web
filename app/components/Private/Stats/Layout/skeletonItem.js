@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
+import { Grid, withStyles } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
+import styles from 'containers/Private/Stats/styles';
 
 const SkeletonItem = props => {
   const { classes } = props;
@@ -19,6 +20,8 @@ const SkeletonItem = props => {
   );
 };
 
-SkeletonItem.propTypes = {};
+SkeletonItem.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default SkeletonItem;
+export default withStyles(theme => styles(theme))(SkeletonItem);

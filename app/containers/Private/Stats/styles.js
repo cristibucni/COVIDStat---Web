@@ -15,7 +15,7 @@ const styles = theme => ({
     marginTop: 10,
   },
   chartTitle: {
-    height: 48,
+    minHeight: 48,
     boxShadow: '0px 0px 6px rgba(0,0,0,20)',
     flexBasis: '48%',
     background: '#FFF',

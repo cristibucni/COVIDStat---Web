@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { Container, withStyles, Zoom } from '@material-ui/core';
+import { makeSelectErrors } from 'containers/App/selectors';
 import { login } from 'containers/App/actions';
 import AuthComponent from 'components/Landings/Auth';
 import styles from './styles';
@@ -40,4 +44,20 @@ class Auth extends Component {
   }
 }
 
-export default withStyles(theme => styles(theme))(Auth);
+const mapStateToProps = createStructuredSelector({
+  errors: makeSelectErrors(),
+});
+
+const mapDispatchToProps = dispatch => ({
+  dispatch,
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  withStyles(theme => styles(theme)),
+)(Auth);

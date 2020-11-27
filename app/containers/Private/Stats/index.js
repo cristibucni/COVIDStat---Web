@@ -50,32 +50,31 @@ class Stats extends React.Component {
   render() {
     const { isAuthenticated, user, loading, classes, patients, tests, counties, symptoms } = this.props;
     if (loading) {
-      return <LoadingSkeleton classes={classes} />;
+      return <LoadingSkeleton />;
     }
 
     return (
       <div className={classes.statsContainer}>
-        <PositiveNegative tests={tests} classes={classes} />
-        <Charts classes={classes}>
-          <CountyXPatients classes={classes} patients={patients} counties={counties} />
-          <AgeGroupsXPatients classes={classes} patients={patients} />
-          <SymptomXPatients classes={classes} symptoms={symptoms} patients={patients} />
+        <PositiveNegative tests={tests} />
+        <Charts>
+          <CountyXPatients patients={patients} counties={counties} />
+          <AgeGroupsXPatients patients={patients} />
+          <SymptomXPatients symptoms={symptoms} patients={patients} />
         </Charts>
-        <Charts classes={classes}>
+        <Charts>
+          <AgeGroupXSymptoms symptoms={symptoms} patients={patients} />
+        </Charts>
+        <Charts>
+          <AgeXPatients patients={patients} />
+          <DateXPositiveTests tests={tests} />
+        </Charts>
+        <Charts>
+          <GenderXPatients patients={patients} />
+          <Symptoms symptoms={symptoms} />
+        </Charts>
 
-          <AgeGroupXSymptoms classes={classes} symptoms={symptoms} patients={patients} />
-        </Charts>
-        <Charts classes={classes}>
-          <AgeXPatients classes={classes} patients={patients} />
-          <DateXPositiveTests classes={classes} tests={tests} />
-        </Charts>
-        <Charts classes={classes}>
-          <GenderXPatients classes={classes} patients={patients} />
-          <Symptoms classes={classes} symptoms={symptoms} />
-        </Charts>
-
-        <Charts classes={classes}>
-          <DateXPositiveNegative classes={classes} tests={tests} />
+        <Charts>
+          <DateXPositiveNegative tests={tests} />
         </Charts>
       </div>
     );

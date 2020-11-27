@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
+import { Grid, withStyles } from '@material-ui/core';
+import styles from 'containers/Private/Stats/styles';
 
 const Charts = props => {
   const { classes } = props;
@@ -11,6 +12,8 @@ const Charts = props => {
   );
 };
 
-Charts.propTypes = {};
+Charts.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default Charts;
+export default withStyles(theme => styles(theme))(Charts);

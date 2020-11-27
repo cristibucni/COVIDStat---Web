@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
 import ReactEcharts from 'echarts-for-react';
+import { Grid, withStyles } from '@material-ui/core';
+import styles from 'containers/Private/Stats/styles';
 
 const CountyXPatients = props => {
   const { counties, patients, classes } = props;
@@ -16,7 +17,7 @@ const CountyXPatients = props => {
           .filter(patient => patient.countyId === county.countyId).length,
       }));
   return (
-    <Grid conatiner item xs={12} sm={6} md={4} direction={'column'} className={classes.chartContainer}>
+    <Grid container item xs={12} sm={6} md={4} direction={'column'} className={classes.chartContainer}>
       <Grid item xs={12} className={classes.chartTitle}>
         Pacienti impartiti pe judete
       </Grid>
@@ -50,6 +51,10 @@ const CountyXPatients = props => {
   );
 };
 
-CountyXPatients.propTypes = {};
+CountyXPatients.propTypes = {
+  counties: PropTypes.array.isRequired,
+  patients: PropTypes.array.isRequired,
+  classes: PropTypes.object.isRequired,
+};
 
-export default CountyXPatients;
+export default withStyles(theme => styles(theme))(CountyXPatients);

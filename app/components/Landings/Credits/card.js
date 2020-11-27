@@ -28,6 +28,7 @@ const MemberCard = props => {
 };
 
 MemberCard.propTypes = {
+  classes: PropTypes.object.isRequired,
   member: PropTypes.object.isRequired,
 };
 

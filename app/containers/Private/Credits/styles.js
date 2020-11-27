@@ -26,7 +26,7 @@ const styles = theme => ({
   root: {
     flexBasis: 500,
     width:'100%',
-    margin: 10,
+    margin: '10px 0'
   },
 });
 

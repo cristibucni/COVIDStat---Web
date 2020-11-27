@@ -83,6 +83,8 @@ const Info = props => {
   );
 };
 
-Info.propTypes = {};
+Info.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(theme => styles(theme))(Info);

@@ -1,8 +1,9 @@
 import React from 'react';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
-import Grid from '@material-ui/core/Grid';
-import _ from 'lodash';
+import { Grid, withStyles } from '@material-ui/core';
+import styles from 'containers/Private/Stats/styles';
 
 const AgeXPatients = props => {
   const { patients, classes } = props;
@@ -12,7 +13,7 @@ const AgeXPatients = props => {
     patients: patients.filter(patient => patient.totalScore > 200).filter(patient => patient.age === age).length,
   }));
   return (
-    <Grid conatiner item xs={12} sm={6} direction={'column'} className={classes.chartContainer}>
+    <Grid container item xs={12} sm={6} direction={'column'} className={classes.chartContainer}>
       <Grid item xs={12} className={classes.chartTitle}>
         Pacienti impartiti pe varsta
       </Grid>
@@ -70,4 +71,4 @@ AgeXPatients.defaultProps = {
   patients: [],
 };
 
-export default AgeXPatients;
+export default withStyles(theme => styles(theme))(AgeXPatients);

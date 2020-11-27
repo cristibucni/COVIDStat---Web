@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import NotFoundPage from 'containers/Utils/NotFoundPage/Loadable';
-
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import reducer from './reducer';
@@ -17,12 +16,17 @@ import { makeSelectErrors, makeSelectUser, makeSelectUserIsAuthenticated, makeSe
 import theme from 'containers/Layout/theme';
 
 import Dashboard from '../Private/Dashboard/Loadable';
+import Stats from 'containers/Private/Stats/Loadable';
+import TestRequests from 'containers/Private/TestRequests/Loadable';
 import Auth from '../Landings/Auth/Loadable';
 import Navigation from 'containers/Layout/Navigation';
+import Credits from 'containers/Private/Credits/Loadable';
+import Info from 'containers/Landings/Info/Loadable';
 
 import GlobalStyle from '../../global-styles';
 import { AuthContext } from 'containers/App/constants';
 import Footer from 'containers/Layout/Footer';
+import history from 'utils/history';
 
 class App extends React.Component {
   constructor(props) {
@@ -47,6 +51,7 @@ class App extends React.Component {
 
   logout = () => {
     this.props.dispatch(logout());
+    history.push('/');
   };
 
   render() {
@@ -63,9 +68,13 @@ class App extends React.Component {
                 isAuthenticated ? <Dashboard /> : <Auth dispatch={this.props.dispatch} errors={this.props.errors} />
               }
             />
+            <Route exact path={'/info'} component={Info} />
+            <Route exact path={'/stats'} component={Stats} />
+            <Route exact path={'/tests'} component={TestRequests} />
+            <Route exact path={'/credits'} component={Credits} />
             <Route component={NotFoundPage} />
           </Switch>
-          {!isAuthenticated && <Footer />}
+          <Footer />
         </AuthContext.Provider>
         <GlobalStyle />
       </ThemeProvider>

@@ -9,7 +9,7 @@ const Footer = props => {
     <div className={classes.footer}>
       <div className={classes.credits}>
         <LocalHospital fontSize={'large'} color={'secondary'} classes={{ root: classes.logo }} />
-        COVIDStat - Un proiect realizat in cadrul disciplinei ????.
+        COVIDStat - Un proiect realizat in cadrul disciplinei ASI.
       </div>
     </div>
   );

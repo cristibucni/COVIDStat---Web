@@ -22,7 +22,7 @@ const Header = props => {
         </IconButton>
         <LocalHospital />
         <Typography variant="h6" className={classes.title}>
-          COVIDStat - Fii parte a luptei contra SARS-CoV-2
+          COVIDStat
         </Typography>
         {isAuthenticated ? (
           <Button color="inherit" onClick={logout}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Info, Dashboard, PieChart, Inbox, LocalHospital, Help} from '@material-ui/icons';
+import { Home, Info, Dashboard, PieChart, Inbox, LocalHospital, Help } from '@material-ui/icons';
 
 export const MENU_ITEMS = [
   {
@@ -7,8 +7,11 @@ export const MENU_ITEMS = [
     icon: className => <LocalHospital classes={{ root: className }} color={'primary'} />,
     link: '/',
   },
-  { text: 'Home', icon: className => <Home classes={{ root: className }} color={'primary'} />, link: '/' },
-  { text: 'Credits', icon: className => <Info classes={{ root: className }} color={'primary'} />, link: '/credits' },
+  {
+    text: 'Informatii utile',
+    icon: className => <Help classes={className && { root: className }} color={'primary'} />,
+    link: '/info',
+  },
 ];
 export const PRIVATE_MENU_ITEMS = [
   {
@@ -22,13 +25,9 @@ export const PRIVATE_MENU_ITEMS = [
     link: '/stats',
   },
   {
-    text: 'Cereri testare',
+    text: 'Cereri de testare',
     icon: className => <Inbox classes={className && { root: className }} color={'primary'} />,
     link: '/tests',
   },
-  {
-    text: 'Informatii utile',
-    icon: className => <Help classes={className && { root: className }} color={'primary'} />,
-    link: '/tests',
-  },
+  { text: 'Credite', icon: className => <Info classes={{ root: className }} color={'primary'} />, link: '/credits' },
 ];

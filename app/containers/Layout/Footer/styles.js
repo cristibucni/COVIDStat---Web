@@ -7,7 +7,7 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     backgroundImage: `url(${background})`,
-    backgroundPosition:'center'
+    backgroundPosition: 'center',
   },
   logo: {
     fontSize: '34px',
@@ -15,7 +15,7 @@ const styles = theme => ({
   credits: {
     display: 'flex',
     alignItems: 'center',
-    color: theme.palette.text.secondary,
+    color: '#FFF',
     fontWeight: 'bolder',
     fontSize: '20px',
     lineHeight: '22px',

@@ -22,6 +22,7 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     marginTop: '32px',
+    justifyContent:'center'
   },
   cardText: {
     fontSize: '25px',
@@ -35,7 +36,6 @@ const styles = theme => ({
     flexDirection: 'column',
     margin: '0 auto',
     maxWidth: '1180px',
-    minHeight: '92vh',
     paddingTop: '55px',
     width: '100%',
   },

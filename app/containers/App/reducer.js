@@ -32,7 +32,7 @@ function globalReducer(state = initialState, action) {
     case SET_AUTH_TOKEN: {
       if (action.token) {
         // Apply to every request
-        axios.defaults.headers.common.Authorization = action.token;
+        axios.defaults.headers.common.Authorization = `Bearer ${action.token}`;
       } else {
         // Delete Auth Header
         delete axios.defaults.headers.common.Authorization;

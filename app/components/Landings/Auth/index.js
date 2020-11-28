@@ -23,7 +23,7 @@ const LoginComponent = props => {
       <div className={classes.form}>
         <FormControl className={classes.formControl} fullWidth>
           <TextField
-            dislabed={loading}
+            disabled={loading}
             fullWidth
             label="Email"
             name="email"
@@ -35,7 +35,7 @@ const LoginComponent = props => {
         </FormControl>
         <FormControl className={classes.formControl} fullWidth>
           <TextField
-            dislabed={loading}
+            disabled={loading}
             fullWidth
             label="Password"
             name="password"

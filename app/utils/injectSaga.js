@@ -1,6 +1,6 @@
 import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import { ReactReduxContext } from 'react-redux';
+import {ReactReduxContext} from 'react-redux';
 
 import getInjectors from './sagaInjectors';
 
@@ -22,9 +22,7 @@ export default ({ key, saga, mode }) => WrappedComponent => {
 
     static contextType = ReactReduxContext;
 
-    static displayName = `withSaga(${WrappedComponent.displayName ||
-      WrappedComponent.name ||
-      'Component'})`;
+    static displayName = `withSaga(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
 
     constructor(props, context) {
       super(props, context);

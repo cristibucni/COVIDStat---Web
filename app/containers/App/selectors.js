@@ -30,4 +30,4 @@ const makeSelectLoading = () =>
     state => state.get('loading'),
   );
 
-export { makeSelectUserIsAuthenticated, makeSelectUser, makeSelectLocation, makeSelectErrors, makeSelectLoading};
+export { makeSelectUserIsAuthenticated, makeSelectUser, makeSelectLocation, makeSelectErrors, makeSelectLoading };

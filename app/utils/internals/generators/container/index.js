@@ -14,9 +14,7 @@ module.exports = {
       default: 'Form',
       validate: value => {
         if (/.+/.test(value)) {
-          return componentExists(value)
-            ? 'A component or container with this name already exists'
-            : true;
+          return componentExists(value) ? 'A component or container with this name already exists' : true;
         }
 
         return 'The name is required';
@@ -38,8 +36,7 @@ module.exports = {
       type: 'confirm',
       name: 'wantActionsAndReducer',
       default: true,
-      message:
-        'Do you want an actions/constants/selectors/reducer tuple for this container?',
+      message: 'Do you want an actions/constants/selectors/reducer tuple for this container?',
     },
     {
       type: 'confirm',
@@ -121,8 +118,7 @@ module.exports = {
       });
       actions.push({
         type: 'add',
-        path:
-          '../../app/containers/{{properCase name}}/tests/selectors.test.js',
+        path: '../../app/containers/{{properCase name}}/tests/selectors.test.js',
         templateFile: './container/selectors.test.js.hbs',
         abortOnFail: true,
       });

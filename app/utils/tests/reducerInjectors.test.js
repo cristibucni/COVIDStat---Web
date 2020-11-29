@@ -3,12 +3,12 @@
  */
 
 import produce from 'immer';
-import { memoryHistory } from 'react-router-dom';
+import {memoryHistory} from 'react-router-dom';
 import identity from 'lodash/identity';
 
 import configureStore from '../../configureStore';
 
-import getInjectors, { injectReducerFactory } from '../reducerInjectors';
+import getInjectors, {injectReducerFactory} from '../reducerInjectors';
 
 // Fixtures
 
@@ -76,9 +76,7 @@ describe('reducer injectors', () => {
       injectReducer('test', reducer);
 
       const actual = store.getState().test;
-      const expected = initialState;
-
-      expect(actual).toEqual(expected);
+      expect(actual).toEqual(initialState);
     });
 
     it('should not assign reducer if already existing', () => {

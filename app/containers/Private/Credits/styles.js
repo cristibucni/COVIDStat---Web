@@ -1,6 +1,3 @@
-import green from '@material-ui/core/colors/green';
-
-const img = require('images/utils/background.png');
 const styles = theme => ({
   avatar: {
     backgroundColor: theme.palette.text.secondary,
@@ -25,8 +22,8 @@ const styles = theme => ({
   },
   root: {
     flexBasis: 500,
-    width:'100%',
-    margin: '10px 0'
+    width: '100%',
+    margin: '10px 0',
   },
 });
 

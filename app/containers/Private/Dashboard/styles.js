@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = () => ({
   card: {
     '&:hover': {
       background: 'rgba(105,102,102,0.1)',
@@ -22,7 +22,7 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     marginTop: '32px',
-    justifyContent:'center'
+    justifyContent: 'center',
   },
   cardText: {
     fontSize: '25px',

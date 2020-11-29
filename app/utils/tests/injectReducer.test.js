@@ -2,14 +2,14 @@
  * Test injectors
  */
 
-import { memoryHistory } from 'react-router-dom';
+import {memoryHistory} from 'react-router-dom';
 import React from 'react';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
-import { render } from 'react-testing-library';
+import {render} from 'react-testing-library';
 
 import configureStore from '../../configureStore';
-import injectReducer, { useInjectReducer } from '../injectReducer';
+import injectReducer, {useInjectReducer} from '../injectReducer';
 import * as reducerInjectors from '../reducerInjectors';
 
 // Fixtures
@@ -48,9 +48,7 @@ describe('injectReducer decorator', () => {
 
   it('should set a correct display name', () => {
     expect(ComponentWithReducer.displayName).toBe('withReducer(Component)');
-    expect(
-      injectReducer({ key: 'test', reducer })(() => null).displayName,
-    ).toBe('withReducer(Component)');
+    expect(injectReducer({ key: 'test', reducer })(() => null).displayName).toBe('withReducer(Component)');
   });
 
   it('should propagate props', () => {

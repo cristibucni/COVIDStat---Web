@@ -63,13 +63,7 @@ class App extends React.Component {
         <AuthContext.Provider value={{ isAuthenticated, user, loading }}>
           <Navigation logout={this.logout} />
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() =>
-                isAuthenticated ? <Dashboard /> : <Auth />
-              }
-            />
+            <Route exact path="/" render={() => (isAuthenticated ? <Dashboard /> : <Auth />)} />
             <PublicRoute restricted={false} component={Info} path="/info" exact />
             <PrivateRoute isAuthenticated={isAuthenticated} component={Stats} path="/stats" exact />
             <PrivateRoute isAuthenticated={isAuthenticated} component={TestRequests} path="/tests" exact />
